@@ -52,7 +52,7 @@ button:hover {
     margin: 5px;
     font-size: 16px;
 }
-.Quiz-Section {
+.quiz-section {
     display: block;
     margin: 10px auto;
     padding: 10 px;
@@ -64,7 +64,7 @@ button:hover {
     color: #ccc;
     scroll-behavior: smooth;
 }
-.Quiz-Section button {
+.quiz-section button {
     background-color: aqua;
     padding: 10 px;
     border: grey;
@@ -74,14 +74,14 @@ button:hover {
     margin: 10px 0;
     transition: background-color 0.3 ease;
 }
-.Quiz-Section button:hover {
+.quiz-section button:hover {
     background-color: #45a049;
     transform: scale(1.05);
 }
-.Propagation-techniques {
+.propagation-techniques {
     scroll-behavior: smooth;
 }
-.Quiz-Section h2 {
+.quiz-section h2 {
     text-align: center;
 }
 .hidden {
