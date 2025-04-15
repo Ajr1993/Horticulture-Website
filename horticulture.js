@@ -34,6 +34,8 @@ function ChangeTextColour(){
     }
     document.querySelector('#ChangeFontSize').addEventListener('click', ChangeFontSize);
 
+    
+
 
 
 

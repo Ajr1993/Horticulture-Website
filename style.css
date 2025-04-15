@@ -36,3 +36,48 @@ ul li{
     background-color: lightgray;
     border-radius: 5px;
 }
+html {
+    scroll-behavior: smooth;
+}
+button:hover {
+    background-color: #ccc;
+    cursor: pointer;
+}
+.button {
+    padding: 10px 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 16px;
+}
+.Quiz-Section {
+    display: block;
+    margin: 10px auto;
+    padding: 10 px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: darkblue;
+    color: #ccc;
+    scroll-behavior: smooth;
+}
+.Quiz-Section button {
+    background-color: aqua;
+    padding: 10 px;
+    border: grey;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 10px 0;
+    transition: background-color 0.3 ease;
+}
+.Quiz-Section button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+.Propagation-techniques {
+    scroll-behavior: smooth;
+}
