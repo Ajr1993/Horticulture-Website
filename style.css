@@ -87,3 +87,20 @@ button:hover {
 .hidden {
     display: none;
 }
+
+.sign-up-page {
+    background-color: lightgray;
+    font-family: 'Times New Roman', Times, serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form {
+    background-color: lightgray;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+}
+
