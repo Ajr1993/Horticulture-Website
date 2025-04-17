@@ -23,11 +23,15 @@ db.connect(function(err) {
     }
 });
 
-// ===== SIGNUP Route =====
+app.get('/', function(req, res) {
+    res.redirect('/signup');
+});
+
+
 app.post('/signup', function(req, res) {
     const { username, password } = req.body;
 
-    // First check if username already exists
+    
     const checkUserSql = "SELECT * FROM users WHERE username = ?";
     db.query(checkUserSql, [username], function(err, results) {
         if (err) {
@@ -39,7 +43,7 @@ app.post('/signup', function(req, res) {
             return res.status(400).send("Username already taken");
         }
 
-        // If username is new, hash the password and insert user
+        
         bcrypt.hash(password, 10, function(err, hashedPassword) {
             if (err) {
                 console.error("Error hashing password:", err);
@@ -58,7 +62,6 @@ app.post('/signup', function(req, res) {
         });
     });
 });
-
 // ===== LOGIN Route =====
 app.post('/login', function(req, res) {
     const { username, password } = req.body;
@@ -89,9 +92,4 @@ app.post('/login', function(req, res) {
             }
         });
     });
-});
-
-// Start the server
-app.listen(3000, function() {
-    console.log("Server running on http://localhost:3000");
 });
