@@ -1,0 +1,47 @@
+#heading {
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: underline;
+    text-align: center;
+}
+
+#mulches-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: auto;
+    margin-top: 20px;
+    gap: 150px;
+}
+
+#mulches-to-use li{
+    margin-bottom: 20px;
+}
+
+#close-up-of-mulch{
+    width: 80%;
+    height: 60vh;
+    justify-self: center;
+    border-radius: 10px;
+    border: 2px solid rgb(58, 4, 4);
+    animation-name: spin;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+   animation-timing-function: ease-in;
+}
+
+#close-up-of-mulch:hover{
+    width: 90%;
+    height: 70vh;
+}
+
+@keyframes spin {
+    0%{
+        transform: rotate(0deg);
+        opacity: 0;
+    }
+    
+    100%{
+        transform: rotate(360deg);
+        opacity: 1;
+    }
+}

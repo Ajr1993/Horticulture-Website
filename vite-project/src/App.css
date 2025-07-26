@@ -1,0 +1,25 @@
+#App {
+  font-weight: 600px;
+  padding-left: 100px;
+  text-align: center;
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.nav-link.active {
+  display: block !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  width: 100% !important;
+  color: darkgreen !important;
+}
+
+.nav-item {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+nav.navbar.bg-body-tertiary {
+  background-color: aqua !important;
+}

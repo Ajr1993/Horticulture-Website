@@ -1,0 +1,181 @@
+#title{
+    text-align: center;
+    font-weight: 700;
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+#subTitle{
+    font-style: italic;
+    color: black;
+    margin-left: auto;
+    width: 275px;
+    text-decoration: underline;
+}
+
+#first {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    
+}
+#second{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+#third{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+#fourth{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+#Password{
+    margin-left: 50px;
+}
+
+
+#email{
+    margin-left: 77px;
+}
+
+
+#first-name{
+    margin-left: 79px;
+}
+
+
+
+#second-name{
+    margin-left: 73px;
+}
+
+#fifth{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    gap: 20px;
+    margin-left: auto;
+    width: 150px;
+    margin-left: 130px;
+    margin-bottom: 20px;
+    padding-left: 10px;
+}
+
+#fifth #sign-up, #reset{
+    border-radius: 10px;
+    border: 2px solid black;
+    height: 50px;
+    width: 120px;
+    margin-bottom: 20px;
+}
+
+
+#form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 350px;
+    margin-left: 470px;
+    
+}
+
+#form label{
+    font-weight: bold;
+}
+
+#sign-up{
+    background-color: blue;
+    color: white;
+}
+
+#reset{
+    background-color: blue;
+    color: white;
+}
+
+#sign-up:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+}
+
+#reset:hover{
+    cursor: pointer;
+    transform: scale(1.25);
+}
+
+#container{
+    border: 2px solid black;
+    height: 500px;
+    width: 400px;
+    margin-top: 30px;
+    margin-top: 30px;
+    background-color: rgba(32, 18, 18, 0.212);
+    color: black;
+}
+
+.password-toggle-icon i{
+    color: #333;
+    line-height: 1;
+    margin-left: 10px;
+}
+
+.password-toggle-icon i:hover{
+    transform: scale(1.25);
+}
+.email-toggle-icon i{
+    color: #333;
+    line-height: 1;
+    margin-left: 10px;
+}
+
+.email-toggle-icon i:hover{
+    transform: scale(1.25);
+}
+
+.sname-toggle-icon i{
+    color: #333;
+    line-height: 1;
+    margin-left: 10px;
+}
+
+.sname-toggle-icon i:hover{
+    transform: scale(1.25);
+}
+
+.fname-toggle-icon i{
+    color: #333;
+    line-height: 1;
+    margin-left: 10px;
+}
+
+.fname-toggle-icon i:hover{
+    transform: scale(1.25);
+}
+
+
+
+
+
+
+

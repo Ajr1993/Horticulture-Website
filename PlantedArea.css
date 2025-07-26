@@ -1,0 +1,74 @@
+.caring-for-a-planted-area h2{
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    text-decoration: underline;
+}
+#gardening-for-beginners{
+    width: auto;
+    
+}
+
+#caring-for-plants{
+    max-width: auto;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+#caring-for-plants li{
+    margin-bottom: 20px;
+}
+
+#planting{
+    height: 300px;
+    width: 300px;
+    border-radius: 10px;
+}
+#planting:hover{
+    border: 3px solid black;
+    width: 350px;
+    height: 350px;
+}
+#planting-container{
+    display: grid;
+    grid-template-columns: 1fr ;
+    animation-name: plants;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    transition: 3s ease-in-out;
+}
+
+@keyframes plants {
+    0%{
+        transform: rotate(0deg) scale(0.5) translateY(-50px);
+        opacity: 0;
+        box-shadow: none;
+        background-color: white;
+    }
+    100%{
+        transform: rotate(360deg) scale(1) translateY(0);
+        opacity: 1;
+        box-shadow: 0 4px 8px rgba(59, 2, 2, 0.5);
+    }
+}
+
+#planting-container li{
+    margin-bottom: 20px;
+    
+}
+
+#benefits-of-caring-for-a-planted-area h3{
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+    margin-top: 0;
+    column-gap: 30px;
+    justify-content: left;
+    
+}
+#benefits-of-caring-for-a-planted-area ul{
+    margin-top: 0;
+
+}

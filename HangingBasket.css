@@ -1,0 +1,60 @@
+#hanging-baskets{
+    background-color: lightcyan;
+}
+#hanging-baskets h2{
+    text-decoration: underline;
+    text-align: center;
+   
+}
+#looking-after-hangingbaskets li{
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+#looking-after-hangingbaskets h2{
+    margin-bottom: 10px;
+    text-align: left;
+}
+#hanging-baskets-img{
+    border-radius: 10px;
+    height: 350px;
+    width:350px;
+}
+#hanging-baskets-img:hover{
+    height: 500px;
+    width:500px;
+    transition: scale(1.4);
+}
+#gardening-tip{
+    animation-name: move;
+    animation-duration: 3s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+  
+}
+#resources{
+    animation-name: spin;
+    animation-duration: 3s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+@keyframes spin {
+    0% {
+        transform: translateX(100%) rotate(0deg);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0) rotate(360deg);
+        opacity: 1;
+    }
+}
+
+@keyframes move  {
+    0%{
+        transform: translateX(100%) rotate(0deg);
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0)  rotate(360deg);
+        opacity: 1;
+    }
+}

@@ -3,20 +3,48 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sign Up</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="Sign-up.css">
+        <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     </head>
+    
     <body>
-        <div class="sign-up-page">
-            <form action="/signup" method="POST">
-                <label for="username">Username:</label><br>
-                <input type="text" id="username"  name="username" placeholder="username" required/>
-                <br><br>
-                <label for="password">Password:</label><br>
-                <input type="password" id="password"  name="password" placeholder="password" required/>
-                <br><br>
-                <button type="submit">Sign up</button>
-            </form>
+        <h1 id="title">Horticulture Sign up</h1>
+        <form id="form" action="http://localhost:3000/signup" method="post">
+
+            <div id="container">
+            <h2 id ="subTitle">Lets get started</h2>
+            <div id="first">
+            <label for="first-name" id="fname">First name:</label>
+            <input type="text" id="first-name" name="firstname" required>
+            <span class="fname-toggle-icon"><i class="fas fa-user"></i></span>
         </div>
+
+            <div id="second">
+            <label for="second-name" id="sname">Second name:</label>
+            <input type="text" id="second-name" name="secondname" required>
+            <span class="sname-toggle-icon"><i class="fas fa-user"></i></span>
+        </div>
+
+            <div id="third">
+            <label for="email" id="e_mail">Email:</label>
+            <input type="email" id="email" name="email" required>
+            <span class="email-toggle-icon"><i class="fa fa-envelope"></i></span>
+        </div>
+
+            <div id="fourth">
+            <label for="Password" id="pWord">Password:</label>
+            <input type="password" id="Password" name="password" required>
+            <span class="password-toggle-icon"><i class="far fa-eye"></i></span>
+        </div>
+
+        <div id="fifth">
+            <button id="sign-up">submit</button>
+            <button id="reset" type="reset">reset</button>
+        </div>
+        </form>
+
+    </div>
+
+    <script src="Signup.js"></script>
     </body>
 </html>

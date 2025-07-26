@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Login.css">
+     <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body id="body">
+    <h1 id="login">Login</h1>
+    <div id="container">
+    <form id="user_details" method="POST" action="http://localhost:3000/login">
+  <label for="f_name" id="fname">
+    Firstname: 
+    <span class="fname-toggle-icon"><i class="fas fa-user"></i></span>
+  </label><br>
+  <input type="text" id="f_name" name="firstname"><br><br>
+
+  <label for="p_word" id="pword">
+    Password: 
+    <span class="password-toggle-icon"><i class="far fa-eye"></i></span>
+  </label><br>
+  <input type="password" id="p_word" name="password"><br><br>
+
+  <button type="submit">Login</button>
+</form>
+    </div>
+    
+</body>
+</html>

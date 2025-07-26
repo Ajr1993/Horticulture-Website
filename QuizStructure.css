@@ -1,0 +1,15 @@
+#quiz{
+    background-color: burlywood;
+}
+
+
+#question-1, #question-2, #question-3, #question-4, #question-5, #question-6, #question-7 {
+    margin-bottom: 10px;
+}
+
+#message1, #message2, #message3,#message4,#message5,#message6,#message7{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: blue;
+}

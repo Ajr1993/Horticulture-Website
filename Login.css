@@ -1,0 +1,52 @@
+#login{
+    text-align: center;  
+    justify-content: center;
+    
+}
+
+#container{
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 400px;
+    height: 350px;
+    margin-top: 50px;
+    margin-left: 5px;
+    margin-bottom: 100px;
+    background-color: lightblue
+}
+
+#user_details{
+    justify-content: center;
+    margin-top: 10px;
+    background-color: lightblue;
+}
+
+#pword{
+    margin-top: 20px;
+}
+
+
+#body {
+  background-color: rgb(182, 34, 125);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; /* center children vertically in flex */
+  min-height: 100vh; /* full viewport height */
+  
+  
+}
+
+.fname-toggle-icon,
+.password-toggle-icon {
+    margin-left: 8px;
+    cursor: pointer;
+    color: #555;
+}
+
+.fname-toggle-icon i:hover,
+.password-toggle-icon i:hover {
+    color: #000;
+}
+
