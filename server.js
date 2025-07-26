@@ -29,7 +29,6 @@ sql
     pool = p;
     console.log("Connected to database", config.database);
 
-    // Start the server only after connection is ready
     app.listen(port, function () {
       console.log("Server running on port " + port);
     });
@@ -37,6 +36,11 @@ sql
   .catch(function (error) {
     console.log("Couldn't connect to database", error);
   });
+
+// Root route handler
+app.get("/", function (req, res) {
+  res.send("API server is running!");
+});
 
 function authenticateToken(req, res, next) {
   var authHeader = req.headers["authorization"];
@@ -78,27 +82,19 @@ app.post("/userRegistration", function (req, res) {
   }
 
   if (!pool) {
-    console.log("Database connection pool not available");
     return res.status(500).send("Database connection not available");
   }
 
   bcrypt.genSalt(10, function (err, salt) {
     if (err) {
-      console.log("Error salting password", err);
       return res.status(500).send("Error salting password");
     }
 
     bcrypt.hash(password, salt, function (err, hashed) {
       if (err) {
-        console.log("Error hashing password", err);
         return res.status(500).send("Error hashing password");
       }
-      console.log("Inserting user:", {
-        firstname: firstname,
-        secondname: secondname,
-        email: email,
-        hashedPassword: hashed,
-      });
+
       pool
         .request()
         .input("Firstname", sql.NVarChar, firstname)
@@ -109,7 +105,6 @@ app.post("/userRegistration", function (req, res) {
           "INSERT INTO USERS (Firstname, Secondname, Email, Password) VALUES (@Firstname, @Secondname, @Email, @Password)"
         )
         .then(function () {
-          console.log("Insert query executed successfully");
           return pool
             .request()
             .input("Email", sql.NVarChar, email)
@@ -131,7 +126,6 @@ app.post("/userRegistration", function (req, res) {
           });
         })
         .catch(function (error) {
-          console.log("Error during registration", error);
           res.status(500).send("Error registering user: " + error.message);
         });
     });
@@ -139,14 +133,10 @@ app.post("/userRegistration", function (req, res) {
 });
 
 app.post("/login", function (req, res) {
-  sql
-    .connect(config)
-    .then(function (pool) {
-      return pool
-        .request()
-        .input("email", sql.NVarChar, req.body.email)
-        .query("SELECT * FROM USERS WHERE Email = @Email");
-    })
+  pool
+    .request()
+    .input("Email", sql.NVarChar, req.body.email)
+    .query("SELECT * FROM USERS WHERE Email = @Email")
     .then(function (result) {
       const user = result.recordset[0];
       if (!user) {
@@ -160,7 +150,7 @@ app.post("/login", function (req, res) {
           return res.status(500).json({ message: "Error comparing passwords" });
         }
         if (isMatch) {
-          const token = generateToken({ id, email: req.body.email });
+          const token = generateToken(id, req.body.email);
           return res.status(201).json({
             message: "User has logged in successfully",
             accessToken: token,
@@ -171,7 +161,7 @@ app.post("/login", function (req, res) {
       });
     })
     .catch(function (error) {
-      return res.status(500).send("Error logging in", error);
+      return res.status(500).send("Error logging in: " + error.message);
     });
 });
 
@@ -179,14 +169,10 @@ app.post("/find-user", authenticateToken, function (req, res) {
   const firstname = req.body.firstname;
   const password = req.body.password;
 
-  sql
-    .connect(config)
-    .then(function (pool) {
-      return pool
-        .request()
-        .input("Firstname", sql.NVarChar, firstname)
-        .query("SELECT * FROM USERS WHERE Firstname = @Firstname");
-    })
+  pool
+    .request()
+    .input("Firstname", sql.NVarChar, firstname)
+    .query("SELECT * FROM USERS WHERE Firstname = @Firstname")
     .then(function (result) {
       if (result.recordset.length === 0) {
         return res.status(401).send("User not found");
@@ -195,7 +181,6 @@ app.post("/find-user", authenticateToken, function (req, res) {
       const user = result.recordset[0];
       const hashed = user.Password;
 
-      // Compare the provided password with the stored hashed password
       bcrypt.compare(password, hashed, function (err, isMatch) {
         if (err) {
           return res.status(500).send("Error comparing passwords");
@@ -219,17 +204,11 @@ app.put("/change-user-details", authenticateToken, function (req, res) {
   const secondname = req.body.secondname;
   const email = req.body.email;
   const id = req.body.ID;
-  let conn;
 
-  sql
-    .connect(config)
-    .then(function (pool) {
-      conn = pool;
-      return conn
-        .request()
-        .input("id", sql.Int, id)
-        .query("SELECT Password FROM USERS WHERE id = @id");
-    })
+  pool
+    .request()
+    .input("id", sql.Int, id)
+    .query("SELECT Password FROM USERS WHERE id = @id")
     .then(function (result) {
       if (result.recordset.length === 0) {
         return res.status(401).send("User not found");
@@ -244,7 +223,7 @@ app.put("/change-user-details", authenticateToken, function (req, res) {
         }
 
         if (isMatch) {
-          conn
+          pool
             .request()
             .input("firstname", sql.NVarChar, firstname)
             .input("secondname", sql.NVarChar, secondname)
@@ -253,7 +232,7 @@ app.put("/change-user-details", authenticateToken, function (req, res) {
             .query(
               "UPDATE USERS SET firstname = @firstname, secondname = @secondname, email = @email WHERE id = @id"
             )
-            .then(function (updateResult) {
+            .then(function () {
               res.status(200).send("User has been updated");
             })
             .catch(function (error) {
@@ -274,9 +253,7 @@ app.delete("/delete-user", authenticateToken, async function (req, res) {
   const id = req.body.ID;
 
   try {
-    const conn = await sql.connect(config);
-
-    const result = await conn
+    const result = await pool
       .request()
       .input("email", sql.NVarChar, email)
       .input("id", sql.Int, id)
@@ -286,7 +263,7 @@ app.delete("/delete-user", authenticateToken, async function (req, res) {
       return res.status(401).send("Error, no users found");
     }
 
-    await conn
+    await pool
       .request()
       .input("email", sql.NVarChar, email)
       .input("id", sql.Int, id)
@@ -294,7 +271,6 @@ app.delete("/delete-user", authenticateToken, async function (req, res) {
 
     return res.send("User has been deleted");
   } catch (error) {
-    // Send only if headers have not already been sent
     if (!res.headersSent) {
       res.status(500).send("Error: " + error.message);
     } else {
@@ -312,8 +288,8 @@ app.post("/forgot-password", authenticateToken, function (req, res) {
 
   sql
     .connect(config)
-    .then(function (pool) {
-      conn = pool;
+    .then(function (poolConn) {
+      conn = poolConn;
       return conn
         .request()
         .input("email", sql.NVarChar, email)
@@ -337,7 +313,7 @@ app.post("/forgot-password", authenticateToken, function (req, res) {
           "UPDATE USERS SET password = @newPassword WHERE email = @email AND id = @id"
         );
     })
-    .then(function (updateResult) {
+    .then(function () {
       res.status(200).send("Password has been updated");
     })
     .catch(function (error) {
